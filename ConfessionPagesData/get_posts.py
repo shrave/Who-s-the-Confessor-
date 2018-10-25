@@ -38,9 +38,23 @@ for post in posts:
 	if post['id'][0]!= '#':
 		posts.remove(post)
 
+import csv
+count = 1
+
+
+# would save the confessions as a csv
+with open('mycsvfile.csv', 'wb') as f:  # Just use 'w' mode in 3.x
+    for post in posts:
+		if count == 1:
+			w = csv.DictWriter(f, post.keys())
+			w.writeheader()
+		w.writerow(post)
+		count -= 1
+
+
 for post in posts:
 	# if not post['confession']:
-	print post
+	print type(post)
 # print posts
 #Confession template.
 # 29 August at 13:42 ·
